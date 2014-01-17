@@ -20,11 +20,11 @@
                 PyObject *__obj = PyTuple_New(2);\
                 \
                 PyTuple_SetItem(__obj, 0, \
-                        PyInt_FromLong(UDT::getlasterror().getErrorCode())\
+                        PyLong_FromLong(UDT::getlasterror().getErrorCode())\
                         );\
                 \
                 PyTuple_SetItem(__obj, 1, \
-                        PyString_FromString(\
+                        PyBytes_FromString(\
                                 UDT::getlasterror().getErrorMessage()\
                                 )\
                         );\

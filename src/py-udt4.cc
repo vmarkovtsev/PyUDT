@@ -333,9 +333,8 @@ static PyGetSetDef pyudt4_perfmon_getset[] = {
 
 
 static PyTypeObject pyudt4_perfmon_type = {
-    PyObject_HEAD_INIT(NULL)
-    0,                                          /* ob_size              */
-    "TRACEINFO",                                  /* tp_name              */
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "TRACEINFO",                                /* tp_name              */
     sizeof(pyudt4_perfmon_obj),                 /* tp_basicsize         */
     0,                                          /* tp_itemsize          */
     0,                                          /* tp_dealloc           */
@@ -811,7 +810,7 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
         case UDP_RCVBUF  :
         case UDT_SNDTIMEO:
         case UDT_RCVTIMEO: {
-                if (!PyInt_Check(bogus_opt)) {
+                if (!PyLong_Check(bogus_opt)) {
                         PyErr_SetString(
                                 PyExc_TypeError,
                                 "Option value should be of type bool()"
@@ -820,7 +819,7 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
                         return 0x0;
                 }
                 
-                int optval = PyInt_AsLong(bogus_opt);
+                int optval = PyLong_AsLong(bogus_opt);
                 
                 if (UDT::ERROR == (rc = UDT::setsockopt(sock->sock, 0, optname, 
                                                         &optval, sizeof(int)))
@@ -842,7 +841,7 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
                         return 0x0;
                 }
                 
-                long optval = PyInt_AsLong(bogus_opt);
+                long optval = PyLong_AsLong(bogus_opt);
                
                 if (UDT::ERROR == (rc = UDT::setsockopt(sock->sock, 0, optname, 
                                                         &optval, sizeof(long)))
@@ -890,10 +889,10 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
 
                         return 0x0; 
                 } else {
-                        optval.l_onoff  = PyInt_AsLong(
+                        optval.l_onoff  = PyLong_AsLong(
                                                  PyTuple_GetItem(bogus_opt, 0)
                                                  );
-                        optval.l_linger = PyInt_AsLong(
+                        optval.l_linger = PyLong_AsLong(
                                                  PyTuple_GetItem(bogus_opt, 1)
                                                  );
                 }
@@ -1690,15 +1689,25 @@ static PyMethodDef pyudt4_module_methods[] = {
 #define PyMODINIT_FUNC void
 #endif 
 
+static struct PyModuleDef moduledef = {
+        PyModuleDef_HEAD_INIT,
+        "_udt4",     /* m_name */
+        "Python extension for UDT4",  /* m_doc */
+        -1,                  /* m_size */
+        pyudt4_module_methods,    /* m_methods */
+        NULL,                /* m_reload */
+        NULL,                /* m_traverse */
+        NULL,                /* m_clear */
+        NULL,                /* m_free */
+};
+
 PyMODINIT_FUNC
-init_udt4()
+PyInit__udt4()
 {
         PyObject *m;
          
-        if ((m = Py_InitModule3("_udt4", pyudt4_module_methods, 
-                                "Python extension for UDT4"
-                                )) == 0x0)
-                return;
+        if ((m = PyModule_Create(&moduledef)) == 0x0)
+                return NULL;
        
         /* add exception */
         pyudt4_exception_obj = PyErr_NewException(
@@ -1712,7 +1721,7 @@ init_udt4()
         
         
         if (PyType_Ready(&pyudt4_perfmon_type) < 0)
-                return;
+                return NULL;
 
         pyudt4_perfmon_type.tp_new = PyType_GenericNew;  
         Py_INCREF(&pyudt4_perfmon_type);
@@ -1754,7 +1763,7 @@ init_udt4()
             PyModule_AddIntConstant(m, "UDT_SNDDATA"   , UDT_SNDDATA   ) < 0 ||
             PyModule_AddIntConstant(m, "UDT_RCVDATE"   , UDT_RCVDATA   ) < 0 
            ) 
-                return;
+                return NULL;
         
         /* EPOLLOpt */
         if (
@@ -1762,7 +1771,7 @@ init_udt4()
             PyModule_AddIntConstant(m, "UDT_EPOLL_OUT" , UDT_EPOLL_OUT ) < 0 ||
             PyModule_AddIntConstant(m, "UDT_EPOLL_ERR" , UDT_EPOLL_ERR ) < 0 
            ) 
-                return;
+                return NULL;
 
 
         /* UDTSTATUS */
@@ -1777,7 +1786,7 @@ init_udt4()
             PyModule_AddIntConstant(m, "UDTSTATUS_CLOSED"    , CLOSED    ) < 0 ||
             PyModule_AddIntConstant(m, "UDTSTATUS_NONEXIST"  , NONEXIST  ) < 0 
             ) 
-                return;
+                return NULL;
        
 
         /* exception codes */
@@ -1856,7 +1865,8 @@ init_udt4()
             PyModule_AddIntConstant(m, "EUNKNOWN",             
                                 ERRORINFO::EUNKNOWN    ) < 0 
            ) 
-                return ;
+                return NULL;
+        return m;
 }
 
 #ifdef __cplusplus
