@@ -6,7 +6,7 @@
 
 #include <arpa/inet.h>
 
-#include <udt>
+#include <udt/udt>
 
 
 static int _G_port = 3001;

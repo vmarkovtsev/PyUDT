@@ -11,7 +11,7 @@
 #define __PY_UDT_SOCKET_H_
 
 #include <Python.h>
-#include <udt>
+#include <udt/udt>
 
 #ifdef __cplusplus
 extern "C" {
