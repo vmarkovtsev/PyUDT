@@ -379,7 +379,7 @@ class UdtSocket(object):
         @return int(bytes_written)
         """
         # TODO: This needs fixing inside the udt4 library 
-        if isinstance(basestring, fd):
+        if isinstance(str, fd):
             return udt4.recvfile(self.__sock, fd)
         else:
             return udt4.recvfile(self.__sock, fd.name)
@@ -450,7 +450,7 @@ class UdtSocket(object):
         # method signature wrong
         """
         """
-        if isinstance(basestring, fd):
+        if isinstance(str, fd):
             return udt4.sendfile(self.__sock, fd)
         else:
             return udt4.sendfile(self.__sock, fd.name)
@@ -575,8 +575,8 @@ class Epoll(object):
         ret = self.__epoll.wait(do_uread, do_uwrite, wait, do_sread, do_swrite) 
         
         return (
-            frozenset(map(lambda s: UdtSocket(_sock = s), ret[0])), 
-            frozenset(map(lambda s: UdtSocket(_sock = s), ret[1])), 
-            frozenset(map(lambda s: self.__ssock_map[s] , ret[2])),
-            frozenset(map(lambda s: self.__ssock_map[s] , ret[3]))
+            frozenset([UdtSocket(_sock = s) for s in ret[0]]), 
+            frozenset([UdtSocket(_sock = s) for s in ret[1]]), 
+            frozenset([self.__ssock_map[s] for s in ret[2]]),
+            frozenset([self.__ssock_map[s] for s in ret[3]])
             ) 
