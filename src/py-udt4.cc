@@ -38,119 +38,119 @@ typedef struct __pyudt4_perfmon_obj {
 
 static PyObject*
 pyudt4_perfmon_msTimeStamp(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("l", self->trace.msTimeStamp);     }
+{       return PyLong_FromLong(self->trace.msTimeStamp);     }
 
 static PyObject*
 pyudt4_perfmon_pktSentTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("l", self->trace.pktSentTotal);    }
+{       return PyLong_FromLong(self->trace.pktSentTotal);    }
 
 static PyObject*
 pyudt4_perfmon_pktRecvTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("l", self->trace.pktRecvTotal);    }
+{       return PyLong_FromLong(self->trace.pktRecvTotal);    }
 
 static PyObject*
 pyudt4_perfmon_pktSndLossTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSndLossTotal); }
+{       return PyLong_FromLong(self->trace.pktSndLossTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktRcvLossTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRcvLossTotal); }
+{       return PyLong_FromLong(self->trace.pktRcvLossTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktRetransTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRetransTotal); }
+{       return PyLong_FromLong(self->trace.pktRetransTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktSentACKTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSentACKTotal); }
+{       return PyLong_FromLong(self->trace.pktSentACKTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktRecvACKTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRecvACKTotal); }
+{       return PyLong_FromLong(self->trace.pktRecvACKTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktSentNAKTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSentNAKTotal); }
+{       return PyLong_FromLong(self->trace.pktSentNAKTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktRecvNAKTotal(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRecvNAKTotal); }
+{       return PyLong_FromLong(self->trace.pktRecvNAKTotal); }
 
 static PyObject*
 pyudt4_perfmon_pktSent(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("l", self->trace.pktSent);         }
+{       return PyLong_FromLong(self->trace.pktSent);         }
 
 static PyObject*
 pyudt4_perfmon_pktRecv(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("l", self->trace.pktRecv);         }
+{       return PyLong_FromLong(self->trace.pktRecv);         }
 
 static PyObject*
 pyudt4_perfmon_pktSndLoss(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSndLoss);      }
+{       return PyLong_FromLong(self->trace.pktSndLoss);      }
 
 static PyObject*
 pyudt4_perfmon_pktRcvLoss(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRcvLoss);      }
+{       return PyLong_FromLong(self->trace.pktRcvLoss);      }
 
 static PyObject*
 pyudt4_perfmon_pktRetrans(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRetrans);      }
+{       return PyLong_FromLong(self->trace.pktRetrans);      }
 
 static PyObject*
 pyudt4_perfmon_pktSentACK(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSentACK);      }
+{       return PyLong_FromLong(self->trace.pktSentACK);      }
 
 static PyObject*
 pyudt4_perfmon_pktRecvACK(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRecvACK);      }
+{       return PyLong_FromLong(self->trace.pktRecvACK);      }
 
 static PyObject*
 pyudt4_perfmon_pktSentNAK(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktSentNAK);      }
+{       return PyLong_FromLong(self->trace.pktSentNAK);      }
 
 static PyObject*
 pyudt4_perfmon_pktRecvNAK(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktRecvNAK);      }
+{       return PyLong_FromLong(self->trace.pktRecvNAK);      }
 
 static PyObject*
 pyudt4_perfmon_mbpsSendRate(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("f", self->trace.mbpsSendRate);    }
+{       return PyFloat_FromDouble(self->trace.mbpsSendRate);    }
 
 static PyObject*
 pyudt4_perfmon_mbpsRecvRate(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("f", self->trace.mbpsRecvRate);    }
+{       return PyFloat_FromDouble(self->trace.mbpsRecvRate);    }
 
 static PyObject*
 pyudt4_perfmon_usPktSndPeriod(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("d", self->trace.usPktSndPeriod);  }
+{       return PyFloat_FromDouble(self->trace.usPktSndPeriod);  }
 
 static PyObject*
 pyudt4_perfmon_pktFlowWindow(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktFlowWindow);   }
+{       return PyLong_FromLong(self->trace.pktFlowWindow);   }
 
 static PyObject*
 pyudt4_perfmon_pktCongestionWindow(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktCongestionWindow);}
+{       return PyLong_FromLong(self->trace.pktCongestionWindow);}
 
 static PyObject*
 pyudt4_perfmon_pktFlightSize(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.pktFlightSize);   }
+{       return PyLong_FromLong(self->trace.pktFlightSize);   }
 
 static PyObject*
 pyudt4_perfmon_msRTT(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("f", self->trace.msRTT);           }
+{       return PyFloat_FromDouble(self->trace.msRTT);           }
 
 static PyObject*
 pyudt4_perfmon_mbpsBandwidth(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("f", self->trace.mbpsBandwidth);   }
+{       return PyFloat_FromDouble(self->trace.mbpsBandwidth);   }
 
 static PyObject*
 pyudt4_perfmon_byteAvailSndBuf(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.byteAvailSndBuf); }
+{       return PyLong_FromLong(self->trace.byteAvailSndBuf); }
 
 static PyObject*
 pyudt4_perfmon_byteAvailRcvBuf(pyudt4_perfmon_obj *self)
-{       return Py_BuildValue("i", self->trace.byteAvailRcvBuf); }
+{       return PyLong_FromLong(self->trace.byteAvailRcvBuf); }
 
 
 static PyGetSetDef pyudt4_perfmon_getset[] = {
@@ -378,9 +378,7 @@ static PyTypeObject pyudt4_perfmon_type = {
 static PyObject*
 pyudt4_pyudt4_version(PyObject *py_self)
 {
-        return Py_BuildValue(
-                        "ii", MAJOR_VERSION, MINOR_VERSION
-                        );
+        return Py_BuildValue("ii", MAJOR_VERSION, MINOR_VERSION);
 }
 
 static PyObject*
@@ -408,7 +406,7 @@ pyudt4_socket(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "iii", &domain, &type, &protocol)) { 
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [domain => AF_INET] [type] [protocol]"
+                        "arguments: domain_AF_INET type protocol"
                         );
         
                 return NULL;
@@ -458,7 +456,7 @@ pyudt4_bind_to_udp(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "Oi", &sock, &udp_sock)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [UDPSOCKET int()]"
+                        "arguments: UDTSOCKET UDPSOCKET_int"
                         );
 
                 return NULL; 
@@ -490,7 +488,7 @@ pyudt4_bind(PyObject *py_self, PyObject *args)
                 /* nope, just move on with error */
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [address] [port]"
+                        "arguments: address port"
                         );
                 
                 return NULL;
@@ -520,7 +518,7 @@ pyudt4_bind(PyObject *py_self, PyObject *args)
         
         sock->valid = 1;
 
-        return Py_BuildValue("i", 0);
+        return PyLong_FromLong(0);
 }
 
 
@@ -534,7 +532,7 @@ pyudt4_listen(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "Oi", &sock, &backlog)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [backlog]"
+                        "arguments: UDTSOCKET backlog"
                         );
         
                 return NULL;
@@ -551,8 +549,7 @@ pyudt4_listen(PyObject *py_self, PyObject *args)
                 RETURN_UDT_RUNTIME_ERROR;
         }
                 
-        return Py_BuildValue("i", 0);
-
+        return PyLong_FromLong(0);
 }
 
 static PyObject*
@@ -562,7 +559,7 @@ pyudt4_accept(PyObject *py_self, PyObject *args)
         
         if (!PyArg_ParseTuple(args, "O", &sock)) {
                 PyErr_SetString(PyExc_TypeError,
-                        "arguments: [UDTSOCKET]"
+                        "arguments: UDTSOCKET"
                         );
                 
                 return NULL;
@@ -624,7 +621,7 @@ pyudt4_connect(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "Osi", &sock, &host, &port)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [PORT]"
+                        "arguments: UDTSOCKET PORT"
                         );
 
                 return NULL; 
@@ -656,7 +653,7 @@ pyudt4_connect(PyObject *py_self, PyObject *args)
         
         sock->valid = 1;
         
-        return Py_BuildValue("i", 0);
+        return PyLong_FromLong(0);
 }
 
 
@@ -667,7 +664,7 @@ pyudt4_close(PyObject *py_self, PyObject *args)
 
         if (!PyArg_ParseTuple(args, "O", &sock)) {
                 PyErr_SetString(PyExc_TypeError,
-                        "arguments: [UDTSOCKET]"
+                        "arguments: UDTSOCKET"
                         );
                 
                 return NULL;
@@ -679,11 +676,10 @@ pyudt4_close(PyObject *py_self, PyObject *args)
                 Py_BEGIN_ALLOW_THREADS;
                 rc = UDT::close(sock->sock);
                 Py_END_ALLOW_THREADS; 
-                return Py_BuildValue("i", rc);
-        } else {
-                return Py_BuildValue("i", -1);
+                return PyLong_FromLong(rc);
         }
-} 
+        return PyLong_FromLong(-1);
+}
 
 
 static PyObject*
@@ -693,7 +689,7 @@ pyudt4_getpeername(PyObject *py_self, PyObject *args)
 
         if (!PyArg_ParseTuple(args, "O", &sock)) {
                 PyErr_SetString(PyExc_TypeError,
-                        "arguments: [UDTSOCKET]"
+                        "arguments: UDTSOCKET"
                         );
                 
                 return NULL;
@@ -706,7 +702,6 @@ pyudt4_getpeername(PyObject *py_self, PyObject *args)
                                            &addr_len))
                 RETURN_UDT_RUNTIME_ERROR;
         
-
         char client_host[NI_MAXHOST];
         char client_srvc[NI_MAXSERV];
 
@@ -724,9 +719,7 @@ pyudt4_getpeername(PyObject *py_self, PyObject *args)
                 return NULL;
         }
        
-        return Py_BuildValue(
-                        "si", client_host, ntohs(client_stg.sin_port)
-                        ); 
+        return Py_BuildValue("si", client_host, ntohs(client_stg.sin_port));
 } 
 
 
@@ -738,7 +731,7 @@ pyudt4_getsockname(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "O", &sock)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET]"
+                        "arguments: UDTSOCKET"
                         );
                 
                 return Py_BuildValue("i", 1);
@@ -770,10 +763,8 @@ pyudt4_getsockname(PyObject *py_self, PyObject *args)
                 return NULL;
         }
        
-        return Py_BuildValue(
-                        "si", client_host, ntohs(client_stg.sin_port)
-                        );
-} 
+        return Py_BuildValue("si", client_host, ntohs(client_stg.sin_port));
+}
 
 
 static PyObject*
@@ -790,7 +781,7 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "OiO", &sock, &optname_i, &bogus_opt)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [OPTION]"
+                        "arguments: UDTSOCKET OPTION"
                         );
                 
                 return NULL;  
@@ -917,8 +908,8 @@ pyudt4_setsockopt(PyObject *py_self, PyObject *args)
         }
 
 
-        return Py_BuildValue("i", rc);
-} 
+        return PyLong_FromLong(rc);
+}
 
 
 static PyObject*
@@ -935,7 +926,7 @@ pyudt4_getsockopt(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "Oi", &sock, &optname_i)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET]"
+                        "arguments: UDTSOCKET"
                         );
                 
                 return NULL;
@@ -961,7 +952,7 @@ pyudt4_getsockopt(PyObject *py_self, PyObject *args)
                     ) {
                         RETURN_UDT_RUNTIME_ERROR;
                 } else {
-                        return Py_BuildValue("l", optval);
+                        return PyLong_FromLong(optval);
                 }
         }
 
@@ -975,7 +966,7 @@ pyudt4_getsockopt(PyObject *py_self, PyObject *args)
                         RETURN_UDT_RUNTIME_ERROR;
                 }
                         
-                return Py_BuildValue("i", optval);
+                return PyLong_FromLong(optval);
         }
 
         case UDT_SNDSYN    :
@@ -1018,11 +1009,9 @@ pyudt4_getsockopt(PyObject *py_self, PyObject *args)
                                                         &optval, &len))) {
                         RETURN_UDT_RUNTIME_ERROR; 
                 } else {
-                        return Py_BuildValue(
-                                        "i", optval
-                                        );
-                } 
-        }  
+                        return PyLong_FromLong(optval);
+                }
+        }
 
         default: {
                 PyErr_SetString(
@@ -1031,10 +1020,9 @@ pyudt4_getsockopt(PyObject *py_self, PyObject *args)
                         );
                 
                 return NULL;
-        }
-        }
+        } }
         
-        return Py_BuildValue("i", -1);
+        return PyLong_FromLong(-1);
 }
 
 
@@ -1046,159 +1034,119 @@ pyudt4_getsockstate(PyObject *py_self, PyObject *args)
         if (!PyArg_ParseTuple(args, "O", &sock)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET]" 
+                        "arguments: UDTSOCKET" 
                         );
                 
                 return NULL;
         }
 
-        return Py_BuildValue("i", UDT::getsockstate(sock->sock));
+        return PyLong_FromLong(UDT::getsockstate(sock->sock));
 }
 
 
 static PyObject*
 pyudt4_send(PyObject *py_self, PyObject *args)
 {
-        int rc;
-
-        pyudt4_socket_obj *sock = NULL;
+        pyudt4_socket_obj *sock;
         
         char *buf;
-        int   buf_len;  /* true buffer length    */
-        int   pref_len; /* passed in length size */
+        int buf_len; // true buffer length
+        int pref_len = -1; // passed in length size
 
-        if (!PyArg_ParseTuple(args, "Os#i", &sock, &buf, &buf_len, 
+        if (!PyArg_ParseTuple(args, "Os#|i", &sock, &buf, &buf_len, 
                               &pref_len)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [BUFFER] [BUFFER LENGTH]"
+                        "arguments: UDTSOCKET BUFFER [LENGTH]"
                         );
                 
                 return NULL;
-        } else {
-                if ((pref_len - buf_len) > buf_len) {
-                        PyErr_SetString(
-                                PyExc_ValueError,
-                                "preferred length must not double real "
-                                "buffer length"
-                                );
-
-                        return NULL;
-                }
         }
-        
         if (pref_len > buf_len) {
-                Py_BEGIN_ALLOW_THREADS;
-                rc = UDT::send(sock->sock, buf, buf_len, 0);
-                Py_END_ALLOW_THREADS;
-
-                if (UDT::ERROR == rc) 
-                        RETURN_UDT_RUNTIME_ERROR;
-
-                /* send remainder */
-                memset(buf, '\0', pref_len - buf_len);
+                PyErr_SetString(
+                        PyExc_ValueError,
+                        "supplied length must not be greater than the real "
+                        "buffer length"
+                        );
                 
-                Py_BEGIN_ALLOW_THREADS;
-                rc = UDT::send(sock->sock, buf, pref_len - buf_len, 0);
-                Py_END_ALLOW_THREADS;
-        } else {
-                Py_BEGIN_ALLOW_THREADS;
-                rc = UDT::send(sock->sock, buf, buf_len, 0);
-                Py_END_ALLOW_THREADS;
+                return NULL;
         }
-                
-        if (UDT::ERROR == rc)   
+        int to_send = (pref_len > 0) ? pref_len : buf_len;
+
+        int rc;
+        Py_BEGIN_ALLOW_THREADS;
+        rc = UDT::send(sock->sock, buf, to_send, 0);
+        Py_END_ALLOW_THREADS;
+
+        if (UDT::ERROR == rc)
                 RETURN_UDT_RUNTIME_ERROR;
 
-        return Py_BuildValue("i", rc);
-} 
+        return PyLong_FromLong(rc);
+}
 
 
 static PyObject*
 pyudt4_sendmsg(PyObject *py_self, PyObject *args)
 {
-        int rc;
-
         pyudt4_socket_obj *sock = NULL;
         
         char *buf;
-        int   buf_len;  /* true buffer length    */
-        int   pref_len; /* passed in length size */
-        int   ttl = -1;
+        int buf_len;       /* true buffer length    */
+        int pref_len = -1; /* passed in length size */
+        int ttl = -1;
         PyObject *in_order = Py_False;
 
-        if (!PyArg_ParseTuple(args, "Os#i|iO", &sock, &buf, &buf_len, 
+        if (!PyArg_ParseTuple(args, "Os#|iiO", &sock, &buf, &buf_len, 
                               &pref_len, &ttl, &in_order)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [BUFFER] [BUFFER LENGTH]"
+                        "arguments: UDTSOCKET BUFFER [LENGTH] [TTL] [IN_ORDER]"
                         );
                 
                 return NULL;
-        } else {
-                if ((pref_len - buf_len) > buf_len) {
-                        PyErr_SetString(
-                                PyExc_ValueError,
-                                "preferred length must not double real "
-                                "buffer length"
-                                );
-
-                        return NULL;
-                }
         }
-        
         if (pref_len > buf_len) {
-                /*
-                   udp dgram packets must be sent in a single send for those
-                   with in_order = false
-                   */
-                char *new_buf = (char*)PyMem_Malloc(sizeof(char) * pref_len);
-                
-                memcpy(new_buf, buf , buf_len );
-                memset(&new_buf[buf_len], '\0', pref_len - buf_len);
-                
-                Py_BEGIN_ALLOW_THREADS;
-                rc = UDT::sendmsg(sock->sock, new_buf, pref_len, ttl, 
-                                  in_order != Py_False);
-                Py_END_ALLOW_THREADS;
+                PyErr_SetString(
+                        PyExc_ValueError,
+                        "supplied length should not be greater than the real "
+                        "buffer length"
+                        );
 
-                PyMem_Free(new_buf);
-        } else {
-                Py_BEGIN_ALLOW_THREADS;
-                rc = UDT::sendmsg(sock->sock, buf, buf_len, ttl, 
-                                  in_order != Py_False);
-                Py_END_ALLOW_THREADS;
+                return NULL;
         }
-        
+        int to_send = (pref_len > 0) ? pref_len : buf_len;
+
+        int rc;
+        Py_BEGIN_ALLOW_THREADS;
+        rc = UDT::sendmsg(sock->sock, buf, to_send, ttl, in_order != Py_False);
+        Py_END_ALLOW_THREADS;
+
         if (UDT::ERROR == rc) 
                 RETURN_UDT_RUNTIME_ERROR;
 
-        return Py_BuildValue("i", rc);
+        return PyLong_FromLong(rc);
 } 
 
 
 static PyObject*
 pyudt4_recv(PyObject *py_self, PyObject *args)
 {
-        int rc; 
-
         pyudt4_socket_obj *sock = NULL;
         
         char *buf;
-        int   buf_len;
+        int buf_len;
 
         if (!PyArg_ParseTuple(args, "Oi", &sock, &buf_len)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [INT LENGTH]" 
+                        "arguments: UDTSOCKET LENGTH"
                         );
                 
                 return NULL;
         }
 
-        buf = (char*)PyMem_Malloc(sizeof(char) * buf_len);
-
-        if (NULL == buf) {
+        buf = (char*)PyMem_Malloc(buf_len);
+        if (!buf) {
                 PyErr_SetString(
                         PyExc_MemoryError, "memory allocation error"
                         );
@@ -1206,8 +1154,7 @@ pyudt4_recv(PyObject *py_self, PyObject *args)
                 return NULL;
         }
 
-        memset(buf, '\0', buf_len);
-        
+        int rc;
         Py_BEGIN_ALLOW_THREADS;
         rc = UDT::recv(sock->sock, buf, buf_len, 0);
         Py_END_ALLOW_THREADS;
@@ -1227,25 +1174,22 @@ pyudt4_recv(PyObject *py_self, PyObject *args)
 static PyObject*
 pyudt4_recvmsg(PyObject *py_self, PyObject *args)
 {
-        int rc; 
-
         pyudt4_socket_obj *sock = NULL;
         
         char *buf;
-        int   buf_len;
+        int buf_len;
 
         if (!PyArg_ParseTuple(args, "Oi", &sock, &buf_len)) {
                 PyErr_SetString(
                         PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [INT]" 
+                        "arguments: UDTSOCKET LENGTH" 
                         );
                 
                 return NULL;
         }
 
-        buf = (char*)PyMem_Malloc(sizeof(char) * buf_len);
-
-        if (NULL == buf) {
+        buf = (char*)PyMem_Malloc(buf_len);
+        if (!buf) {
                 PyErr_SetString(
                         PyExc_RuntimeError, 
                         "memory allocation error"
@@ -1254,8 +1198,7 @@ pyudt4_recvmsg(PyObject *py_self, PyObject *args)
                 return NULL;
         }
 
-        memset(buf, '\0', buf_len);
-
+        int rc;
         Py_BEGIN_ALLOW_THREADS;
         rc = UDT::recvmsg(sock->sock, buf, buf_len);
         Py_END_ALLOW_THREADS;
@@ -1277,31 +1220,33 @@ pyudt4_sendfile(PyObject *py_self, PyObject *args)
         pyudt4_socket_obj *sock = NULL;
         
         PyObject *fobj;
-        long  offset;
-        long  size;
-        int   block = 7320000;
-        
-        if (!PyArg_ParseTuple(args, "OOll|l", &sock, &fobj, &offset, &size,
+        long long offset;
+        long long size;
+        int block = 7320000;
+
+        // TODO(ajkxyz): offset is ignored for now, implement it.
+        if (!PyArg_ParseTuple(args, "OOLL|i", &sock, &fobj, &offset, &size,
                               &block)) {
                 PyErr_SetString(PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [FILEOBJ] [LONG] [LONG] [INT]"
+                        "arguments: UDTSOCKET FILEOBJ OFFSET SIZE BLOCK"
                         );
 
                 return NULL;
         } 
-        
+
         PyObject *py_readinto = PyBytes_FromString("readinto");
-        
-        char *buf = (char*) PyMem_Malloc(block);
+
+        char *buf = (char*)PyMem_Malloc(block);
         PyObject *py_buf = PyByteArray_FromStringAndSize(buf, block);
         PyMem_Free(buf);
         buf = PyByteArray_AS_STRING(py_buf);
-        long cnt = 0, to_read = block;
-        long rc, rc2;
-        
+        long long cnt = 0;
+        int to_read = block;
+        int rc, rc2;
+
         Py_INCREF(fobj);
         Py_BEGIN_ALLOW_THREADS;
-        
+
         while (cnt < size) {
                 if (block > size - cnt) {
                   to_read = size - cnt;
@@ -1336,38 +1281,40 @@ pyudt4_recvfile(PyObject *py_self, PyObject *args)
         pyudt4_socket_obj *sock = NULL;
         
         PyObject *fobj;
-        long  offset;
-        long  size;
-        int   block = 366000;
+        long long offset;
+        long long size;
+        int block = 366000;
 
-        if (!PyArg_ParseTuple(args, "OOll|l", &sock, &fobj, &offset, &size,
+        // TODO(ajkxyz): offset is ignored for now, implement it.
+        if (!PyArg_ParseTuple(args, "OOLL|i", &sock, &fobj, &offset, &size,
                               &block)) {
                 PyErr_SetString(PyExc_TypeError,
-                        "arguments: [UDTSOCKET] [FILEOBJ] [LONG] [LONG] [INT]"
+                        "arguments: UDTSOCKET FILEOBJ OFFSET SIZE BLOCK"
                         );
 
                 return NULL;
         }
-        
+
         PyObject *py_write = PyBytes_FromString("write");
-        
+
         char *buf = (char*) PyMem_Malloc(block);
         PyObject *py_buf = PyByteArray_FromStringAndSize(buf, block);
         PyMem_Free(buf);
         buf = PyByteArray_AS_STRING(py_buf);
-        long cnt = 0, to_read = block;
-        long rc;
-        
+        long long cnt = 0;
+        int to_read = block;
+        int rc;
+
         Py_INCREF(fobj);
         Py_BEGIN_ALLOW_THREADS;
-        
+
         while (cnt < size) {
                 if (block > size - cnt) {
                   to_read = size - cnt;
                   PyByteArray_Resize(py_buf, to_read);
                   buf = PyByteArray_AS_STRING(py_buf);
                 }
-                long offs = 0;
+                int offs = 0;
                 while (offs < to_read) {
                   if ((rc = UDT::recv(sock->sock, buf + offs, to_read, 0)) == UDT::ERROR) {
                     break;
@@ -1377,24 +1324,24 @@ pyudt4_recvfile(PyObject *py_self, PyObject *args)
                 if (!offs) {
                   break;
                 }
-                
+
                 PyObject *n_bytes = PyObject_CallMethodObjArgs(fobj, py_write, py_buf, NULL);
                 if ((!n_bytes) || (!(rc = PyLong_AsLong(n_bytes)))) {
                   break;
                 }
-                
+
                 cnt += rc;
-                
+
                 if ((offs < to_read) || (offs != rc)) {
                   break;
                 }
         }
-        
+
         Py_END_ALLOW_THREADS; 
         Py_DECREF(fobj);
         Py_DECREF(py_buf);
         Py_DECREF(py_write);
-        
+
         return PyLong_FromLong(cnt);
 }
 
@@ -1884,4 +1831,4 @@ PyInit__udt4()
 
 #ifdef __cplusplus
 }
-#endif 
+#endif
