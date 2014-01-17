@@ -1289,46 +1289,45 @@ pyudt4_sendfile(PyObject *py_self, PyObject *args)
 
                 return 0x0;
         } 
-
-        /* acquire the file obj */
-        if (!PyFile_Check(fobj)) {
-                PyErr_SetString(PyExc_ValueError,
-                        "File must be file object"
-                        );
-
-                return 0x0;
-        }
-       
-        FILE *fd  = PyFile_AsFile(fobj);
-        char *buf = (char*) PyMem_Malloc(block);
-        long  cnt = 0;
-        long  rc; 
         
-        PyFile_IncUseCount((PyFileObject*) fobj);
+        PyObject *py_readinto = PyBytes_FromString("readinto");
+        
+        char *buf = (char*) PyMem_Malloc(block);
+        PyObject *py_buf = PyByteArray_FromStringAndSize(buf, block);
+        PyMem_Free(buf);
+        buf = PyByteArray_AS_STRING(py_buf);
+        long cnt = 0, to_read = block;
+        long rc, rc2;
+        
+        Py_INCREF(fobj);
         Py_BEGIN_ALLOW_THREADS;
         
         while (cnt < size) {
-                rc = fread(buf, sizeof(char), 
-                           block > (size - cnt) ? block : (size - cnt), fd
-                          );
-        
-                if (0 == rc && feof(fd)) {
-                        break;
-                } else {
-                        rc = UDT::send(sock->sock, buf, rc, 0);
-
-                        if (UDT::ERROR == rc)
-                                break; 
-                        else 
-                                cnt += rc;
+                if (block > size - cnt) {
+                  to_read = size - cnt;
+                  PyByteArray_Resize(py_buf, to_read);
+                  buf = PyByteArray_AS_STRING(py_buf);
+                }
+                PyObject *n_bytes = PyObject_CallMethodObjArgs(fobj, py_readinto, py_buf, NULL);
+                if ((!n_bytes) || (!(rc = PyLong_AsLong(n_bytes)))) {
+                  break;
+                }
+                if ((rc2 = UDT::send(sock->sock, buf, rc, 0)) == UDT::ERROR) {
+                  break;
+                }
+                cnt += rc2;
+                if ((rc < to_read) || (rc != rc2)) {
+                  break;
                 }
         }
         
-        Py_END_ALLOW_THREADS; 
-        PyFile_DecUseCount((PyFileObject*) fobj);
+        Py_END_ALLOW_THREADS;
+        Py_DECREF(fobj);
+        Py_DECREF(py_buf);
+        Py_DECREF(py_readinto);
         
-        return Py_BuildValue("l", cnt);
-} 
+        return PyLong_FromLong(cnt);
+}
 
 
 static PyObject*
@@ -1349,41 +1348,55 @@ pyudt4_recvfile(PyObject *py_self, PyObject *args)
 
                 return 0x0;
         }
-       
-        /* acquire the file obj */
-        if (!PyFile_Check(fobj)) {
-                PyErr_SetString(PyExc_ValueError,
-                        "File must be file object"
-                        );
-
-                return 0x0;
-        }
         
-        FILE *fd  = PyFile_AsFile(fobj);
+        PyObject *py_write = PyBytes_FromString("write");
+        
         char *buf = (char*) PyMem_Malloc(block);
-        long cnt  = 0; 
+        PyObject *py_buf = PyByteArray_FromStringAndSize(buf, block);
+        PyMem_Free(buf);
+        buf = PyByteArray_AS_STRING(py_buf);
+        long cnt = 0, to_read = block;
         long rc;
-
-        PyFile_IncUseCount((PyFileObject*) fobj);
-        Py_BEGIN_ALLOW_THREADS; 
-
+        
+        Py_INCREF(fobj);
+        Py_BEGIN_ALLOW_THREADS;
+        
         while (cnt < size) {
-                rc = UDT::recv(sock->sock, buf, block, 0);
-
-                if (UDT::ERROR == rc) {
-                        break;
-                } else {
-                        cnt += fwrite(buf, sizeof(char), rc, fd);
+                if (block > size - cnt) {
+                  to_read = size - cnt;
+                  PyByteArray_Resize(py_buf, to_read);
+                  buf = PyByteArray_AS_STRING(py_buf);
+                }
+                long offs = 0;
+                while (offs < to_read) {
+                  if ((rc = UDT::recv(sock->sock, buf + offs, to_read, 0)) == UDT::ERROR) {
+                    break;
+                  }
+                  offs += rc;
+                }
+                if (!offs) {
+                  break;
+                }
+                
+                PyObject *n_bytes = PyObject_CallMethodObjArgs(fobj, py_write, py_buf, NULL);
+                if ((!n_bytes) || (!(rc = PyLong_AsLong(n_bytes)))) {
+                  break;
+                }
+                
+                cnt += rc;
+                
+                if ((offs < to_read) || (offs != rc)) {
+                  break;
                 }
         }
         
         Py_END_ALLOW_THREADS; 
-        PyFile_DecUseCount((PyFileObject*) fobj);
-
-        PyMem_Free(buf);
-
-        return Py_BuildValue("l", cnt);
-} 
+        Py_DECREF(fobj);
+        Py_DECREF(py_buf);
+        Py_DECREF(py_write);
+        
+        return PyLong_FromLong(cnt);
+}
 
 
 static PyObject* 
