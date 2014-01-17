@@ -71,14 +71,13 @@ setup(
         package_dir     = { '' : 'lib' },
         ext_modules     = [udt4],
         license         = 'GPLv3', 
-        download_url    = 'https://github.com/cjhanks/PyUDT',
+        download_url    = 'https://github.com/vmarkovtsev/PyUDT',
         keywords        = ['udt', 'pyudt', 'udt4'],
         bugtrack_url    = 'https://github.com/cjhanks/PyUDT/issues',
         classifiers     = [
             'Development Status :: 3 - Alpha',
             'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
             'Topic :: Software Development :: Libraries',
-            'Programming Language :: Python :: 2.6',
-            'Programming Language :: Python :: 2.7'
+            'Programming Language :: Python :: 3.3'
             ]
     ) 
