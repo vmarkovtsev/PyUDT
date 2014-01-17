@@ -32,7 +32,7 @@
                 UDT::getlasterror().clear();\
                 \
                 PyErr_SetObject(pyudt4_exception_obj, __obj);\
-                return 0x0;\
+                return NULL;\
         } while (0)
 
 #endif // __PY_UDT_H_ 

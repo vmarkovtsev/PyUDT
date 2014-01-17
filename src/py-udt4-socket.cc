@@ -52,7 +52,7 @@ static PyMethodDef pyudt4_socket_methods[] = {
                 METH_NOARGS,
                 ""
         },
-        { 0x0 }
+        { NULL }
 };
 
 
@@ -80,34 +80,34 @@ static PyGetSetDef  pyudt4_socket_getset[] = {
         {
                 (char*) "family",
                 (getter) pyudt4_socket_get_domain,
-                (setter) 0x0,
+                (setter) NULL,
                 (char*) "address domain"
         }, 
         {       /* intential duplicate */
                 (char*) "domain",
                 (getter) pyudt4_socket_get_domain,
-                (setter) 0x0,
+                (setter) NULL,
                 (char*) "address domain"
         },
         {
                 (char*) "type",
                 (getter) pyudt4_socket_get_type,
-                (setter) 0x0,
+                (setter) NULL,
                 (char*) "address type"
         },
         {
                 (char*) "protocol",
                 (getter) pyudt4_socket_get_protocol,
-                (setter) 0x0,
+                (setter) NULL,
                 (char*) "address protocol"
         }, 
         {
                 (char*) "UDTSOCKET",
                 (getter) pyudt4_socket_get_udtsocket,
-                (setter) 0x0,
+                (setter) NULL,
                 (char*) "underlying udtsocket"
         }, 
-        { 0x0 }
+        { NULL }
 };
 
 
@@ -157,7 +157,7 @@ PyTypeObject*
 initpyudt4_socket_type(PyObject *module)
 {
         if (PyType_Ready(&pyudt4_socket_type) < 0)
-                return 0x0;
+                return NULL;
 
         pyudt4_socket_type.tp_new = PyType_GenericNew;
        
