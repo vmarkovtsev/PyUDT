@@ -319,8 +319,7 @@ static PyMethodDef pyudt4_epoll_methods[] = {
 };
 
 static PyTypeObject pyudt4_epoll_type = {
-    PyObject_HEAD_INIT(NULL)
-    0,                                          /* ob_size              */
+    PyVarObject_HEAD_INIT(NULL, 0)
     "UDTepoll",                                 /* tp_name              */
     sizeof(pyudt4_epoll_obj),                   /* tp_basicsize         */
     0,                                          /* tp_itemsize          */

@@ -112,8 +112,7 @@ static PyGetSetDef  pyudt4_socket_getset[] = {
 
 
 static PyTypeObject pyudt4_socket_type = {
-    PyObject_HEAD_INIT(NULL)
-    0,                                          /* ob_size              */
+    PyVarObject_HEAD_INIT(NULL, 0)
     "UDTSOCKET",                                /* tp_name              */
     sizeof(pyudt4_socket_obj),                  /* tp_basicsize         */
     0,                                          /* tp_itemsize          */
