@@ -26,6 +26,7 @@ static int
 pyudt4_epoll_init(pyudt4_epoll_obj *self)
 {
         self->eid = UDT::epoll_create();
+        self->obj_map = std::map<UDTSOCKET, pyudt4_socket_obj*>();
         
         return 0;
 }
@@ -54,7 +55,7 @@ pyudt4_epoll_add_usock(pyudt4_epoll_obj *self, PyObject *args)
                 return NULL;
         }
         
-        Py_INCREF(sock);
+        Py_INCREF(sock);        
         self->obj_map[sock->sock] = sock; 
 
         if (UDT::ERROR == UDT::epoll_add_usock(self->eid, sock->sock, &flag))
