@@ -156,7 +156,7 @@ class UdtSocket(object):
         try:
             self.connect(address)
         except udt4.UDTException as err:
-            return err[0] 
+            return err.args[0] 
         
         return 0 
 
