@@ -8,8 +8,9 @@ def main(argv):
     socket.connect(('127.0.0.1', 4032)) 
     
     import time 
-    time.sleep(190) 
-    socket.send('words')
+    time.sleep(1) 
+    socket.send(b'words')
+    time.sleep(10)
 
 if __name__ == '__main__':
     import sys 

@@ -14,7 +14,7 @@ def main(argv):
     print(c0_host)
     
     try:
-        print c0.recv(len('words'))
+        print(c0.recv(len(b'words')))
     except udt.UDTException as err:
         print(err) 
     #c1, c1_host = serv.accept()
