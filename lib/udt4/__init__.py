@@ -42,7 +42,7 @@ import os
 
 import _udt4
 from   _udt4 import *
-import pyudt
+import udt4.pyudt
 
 __all__ = os._get_exports_list(_udt4) + \
          ['UdtSocket', 'dump_perfmon', 'Epoll'] 
